@@ -1,0 +1,13 @@
+Scripts
+=======
+
+inputs/extras/test_fast_expts.py
+--------------------------------
+
+.. literalinclude:: ../../../extras/test_fast_expts.py
+
+inputs/extras/scripts/multiply.py
+---------------------------------
+
+.. literalinclude:: ../../../extras/scripts/multiply.py
+

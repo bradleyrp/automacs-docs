@@ -1,0 +1,301 @@
+
+
+<!doctype html>
+
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Scripts &#8212; AUTOMACS Documentation</title>
+    
+    <link rel="stylesheet" href="../_static/bizstyle.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/bizstyle.js"></script>
+    <link rel="top" title="AUTOMACS Documentation" href="../index.html" />
+    <link rel="next" title="Experiments" href="experiments.html" />
+    <link rel="prev" title="Experiments" href="../amx-proteins/experiments.html" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <!--[if lt IE 9]>
+    <script type="text/javascript" src="_static/css3-mediaqueries.js"></script>
+    <![endif]-->
+  </head>
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="experiments.html" title="Experiments"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="../amx-proteins/experiments.html" title="Experiments"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">AMX docs</a> &#187;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="../index.html">
+              <img class="logo" src="../_static/logo.png" alt="Logo"/>
+            </a></p>
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Scripts</a><ul>
+<li><a class="reference internal" href="#inputs-bilayers-scripts-bilayer-flat-py">inputs/bilayers/scripts/bilayer-flat.py</a></li>
+<li><a class="reference internal" href="#inputs-bilayers-scripts-bilayer-protein-py">inputs/bilayers/scripts/bilayer-protein.py</a></li>
+<li><a class="reference internal" href="#inputs-bilayers-scripts-bilayer-release-py">inputs/bilayers/scripts/bilayer-release.py</a></li>
+<li><a class="reference internal" href="#inputs-bilayers-scripts-bilayer-py">inputs/bilayers/scripts/bilayer.py</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="../amx-proteins/experiments.html"
+                        title="previous chapter">Experiments</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="experiments.html"
+                        title="next chapter">Experiments</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/inputs-bilayers/scripts.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="scripts">
+<h1>Scripts<a class="headerlink" href="#scripts" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="inputs-bilayers-scripts-bilayer-flat-py">
+<h2>inputs/bilayers/scripts/bilayer-flat.py<a class="headerlink" href="#inputs-bilayers-scripts-bilayer-flat-py" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+
+<span class="kn">from</span> <span class="nn">amx</span> <span class="k">import</span> <span class="o">*</span>
+
+<span class="n">init</span><span class="p">()</span>
+<span class="n">make_step</span><span class="p">(</span><span class="n">settings</span><span class="o">.</span><span class="n">step</span><span class="p">)</span>
+<span class="n">write_mdp</span><span class="p">()</span>
+<span class="n">write_continue_script</span><span class="p">()</span>
+<span class="n">build_bilayer</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;vacuum-bilayer&#39;</span><span class="p">)</span>
+<span class="n">copy_file</span><span class="p">(</span><span class="s1">&#39;vacuum-bilayer.gro&#39;</span><span class="p">,</span><span class="s1">&#39;vacuum.gro&#39;</span><span class="p">)</span>
+<span class="n">state</span><span class="o">.</span><span class="n">force_field</span> <span class="o">=</span> <span class="n">settings</span><span class="o">.</span><span class="n">force_field_upright</span>
+<span class="n">write_top</span><span class="p">(</span><span class="s1">&#39;vacuum.top&#39;</span><span class="p">)</span>
+<span class="n">minimize</span><span class="p">(</span><span class="s1">&#39;vacuum&#39;</span><span class="p">)</span>
+<span class="n">vacuum_pack_loop</span><span class="p">(</span>
+	<span class="n">structure</span><span class="o">=</span><span class="s1">&#39;vacuum-minimized&#39;</span><span class="p">,</span>
+	<span class="n">tpr</span><span class="o">=</span><span class="s1">&#39;em-vacuum-steep&#39;</span><span class="p">,</span>
+	<span class="n">gro</span><span class="o">=</span><span class="s1">&#39;vacuum-packed&#39;</span><span class="p">)</span>
+<span class="n">restuff</span><span class="p">(</span>
+	<span class="n">structure</span><span class="o">=</span><span class="s1">&#39;vacuum-packed&#39;</span><span class="p">,</span>
+	<span class="n">gro</span><span class="o">=</span><span class="s1">&#39;solvate-dry&#39;</span><span class="p">,</span>
+	<span class="n">tpr</span><span class="o">=</span><span class="n">get_last</span><span class="p">(</span><span class="s1">&#39;tpr&#39;</span><span class="p">),</span>
+	<span class="n">ndx</span><span class="o">=</span><span class="n">get_last</span><span class="p">(</span><span class="s1">&#39;ndx&#39;</span><span class="p">))</span>
+<span class="n">solvate</span><span class="p">(</span>
+	<span class="n">structure</span><span class="o">=</span><span class="s1">&#39;solvate-dry&#39;</span><span class="p">,</span>
+	<span class="n">gro</span><span class="o">=</span><span class="s1">&#39;solvate-dense&#39;</span><span class="p">)</span>
+<span class="n">write_top</span><span class="p">(</span><span class="s1">&#39;solvate.top&#39;</span><span class="p">)</span>
+<span class="n">minimize</span><span class="p">(</span><span class="s1">&#39;solvate&#39;</span><span class="p">)</span>
+<span class="n">remove_jump</span><span class="p">(</span>
+	<span class="n">structure</span><span class="o">=</span><span class="s1">&#39;solvate-minimized&#39;</span><span class="p">,</span>
+	<span class="n">tpr</span><span class="o">=</span><span class="s1">&#39;em-solvate-steep&#39;</span><span class="p">,</span>
+	<span class="n">gro</span><span class="o">=</span><span class="s1">&#39;solvate-nojump&#39;</span><span class="p">)</span>
+<span class="n">counterions</span><span class="p">(</span><span class="s1">&#39;solvate-nojump&#39;</span><span class="p">,</span><span class="s1">&#39;solvate&#39;</span><span class="p">)</span>
+<span class="n">counterion_renamer</span><span class="p">(</span><span class="s1">&#39;counterions&#39;</span><span class="p">)</span>
+<span class="n">write_top</span><span class="p">(</span><span class="s1">&#39;counterions.top&#39;</span><span class="p">)</span>
+<span class="n">minimize</span><span class="p">(</span><span class="s1">&#39;counterions&#39;</span><span class="p">)</span>
+<span class="n">remove_jump</span><span class="p">(</span>
+	<span class="n">structure</span><span class="o">=</span><span class="s1">&#39;counterions-minimized&#39;</span><span class="p">,</span>
+	<span class="n">tpr</span><span class="o">=</span><span class="s1">&#39;em-counterions-steep&#39;</span><span class="p">,</span>
+	<span class="n">gro</span><span class="o">=</span><span class="s1">&#39;counterions-nojump&#39;</span><span class="p">)</span>
+<span class="n">bilayer_middle</span><span class="p">(</span>
+	<span class="n">structure</span><span class="o">=</span><span class="s1">&#39;counterions-nojump&#39;</span><span class="p">,</span>
+	<span class="n">gro</span><span class="o">=</span><span class="s1">&#39;system&#39;</span><span class="p">)</span>
+<span class="n">bilayer_sorter</span><span class="p">(</span>
+	<span class="n">structure</span><span class="o">=</span><span class="s1">&#39;system&#39;</span><span class="p">,</span>
+	<span class="n">ndx</span><span class="o">=</span><span class="s1">&#39;system-groups&#39;</span><span class="p">)</span>
+<span class="n">write_top</span><span class="p">(</span><span class="s1">&#39;system.top&#39;</span><span class="p">)</span>
+<span class="n">equilibrate</span><span class="p">(</span><span class="n">groups</span><span class="o">=</span><span class="s1">&#39;system-groups&#39;</span><span class="p">)</span>
+<span class="n">move_file</span><span class="p">(</span><span class="s1">&#39;md-npt-bilayer.gro&#39;</span><span class="p">,</span><span class="s1">&#39;md-npt-bilayer-std.gro&#39;</span><span class="p">)</span>
+<span class="n">distinguish_leaflets</span><span class="p">(</span>
+	<span class="n">structure</span><span class="o">=</span><span class="s1">&#39;md-npt-bilayer-std&#39;</span><span class="p">,</span>
+	<span class="n">gro</span><span class="o">=</span><span class="s1">&#39;system-leaflets&#39;</span><span class="p">,</span>
+	<span class="n">indices</span><span class="o">=</span><span class="s1">&#39;dat-monolayer-indices.py&#39;</span><span class="p">)</span>
+<span class="n">move_file</span><span class="p">(</span><span class="s1">&#39;system.top&#39;</span><span class="p">,</span><span class="s1">&#39;system-std.top&#39;</span><span class="p">)</span>
+<span class="n">state</span><span class="o">.</span><span class="n">force_field</span> <span class="o">=</span> <span class="n">settings</span><span class="o">.</span><span class="n">force_field_flat</span>
+<span class="n">write_top</span><span class="p">(</span><span class="s1">&#39;system.top&#39;</span><span class="p">)</span>
+<span class="n">bilayer_flatten_for_restraints</span><span class="p">(</span>
+	<span class="n">structure</span><span class="o">=</span><span class="s1">&#39;system-leaflets&#39;</span><span class="p">,</span>
+	<span class="n">gro</span><span class="o">=</span><span class="s1">&#39;system-leaflets-flat&#39;</span><span class="p">)</span>
+<span class="n">register_file</span><span class="p">(</span><span class="s1">&#39;system-leaflets-flat.gro&#39;</span><span class="p">)</span>
+<span class="n">register_gmx_call</span><span class="p">(</span>
+	<span class="n">command</span><span class="o">=</span><span class="s1">&#39;grompp&#39;</span><span class="p">,</span><span class="n">flag</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">,</span>
+	<span class="n">value</span><span class="o">=</span><span class="s1">&#39;system-leaflets-flat.gro&#39;</span><span class="p">)</span>
+<span class="n">restart_clean</span><span class="p">(</span><span class="n">part</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+	<span class="n">structure</span><span class="o">=</span><span class="s1">&#39;system-leaflets&#39;</span><span class="p">,</span>
+	<span class="n">groups</span><span class="o">=</span><span class="s1">&#39;system-groups&#39;</span><span class="p">)</span>
+
+</pre></div>
+</div>
+</div>
+<div class="section" id="inputs-bilayers-scripts-bilayer-protein-py">
+<h2>inputs/bilayers/scripts/bilayer-protein.py<a class="headerlink" href="#inputs-bilayers-scripts-bilayer-protein-py" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+
+<span class="kn">from</span> <span class="nn">amx</span> <span class="k">import</span> <span class="o">*</span>
+
+<span class="n">init</span><span class="p">()</span>
+<span class="n">make_step</span><span class="p">(</span><span class="n">settings</span><span class="o">.</span><span class="n">step</span><span class="p">)</span>
+<span class="n">write_continue_script</span><span class="p">()</span>
+<span class="n">write_mdp</span><span class="p">()</span>
+<span class="n">place_protein</span><span class="p">()</span>
+<span class="n">adhere_protein_bilayer</span><span class="p">(</span><span class="s1">&#39;prepped-charged&#39;</span><span class="p">)</span>
+<span class="n">remove_ions</span><span class="p">(</span><span class="n">structure</span><span class="o">=</span><span class="s1">&#39;prepped-charged&#39;</span><span class="p">,</span><span class="n">gro</span><span class="o">=</span><span class="s1">&#39;prepped-water&#39;</span><span class="p">)</span>
+<span class="n">counterions</span><span class="p">(</span><span class="n">structure</span><span class="o">=</span><span class="s1">&#39;prepped-water&#39;</span><span class="p">,</span><span class="n">gro</span><span class="o">=</span><span class="s1">&#39;prepped&#39;</span><span class="p">)</span>
+<span class="n">counterion_renamer</span><span class="p">(</span><span class="s1">&#39;prepped&#39;</span><span class="p">)</span>
+<span class="n">write_topology</span><span class="p">(</span><span class="s1">&#39;system.top&#39;</span><span class="p">)</span>
+<span class="n">minimize</span><span class="p">(</span><span class="s1">&#39;prepped&#39;</span><span class="p">,</span><span class="n">top</span><span class="o">=</span><span class="s1">&#39;system&#39;</span><span class="p">)</span>
+<span class="n">detect_lipids</span><span class="p">(</span><span class="n">structure</span><span class="o">=</span><span class="s1">&#39;prepped&#39;</span><span class="p">)</span>
+<span class="n">detect_ions</span><span class="p">(</span><span class="n">structure</span><span class="o">=</span><span class="s1">&#39;prepped&#39;</span><span class="p">)</span>
+<span class="n">recenter_protein_bilayer</span><span class="p">(</span><span class="n">structure</span><span class="o">=</span><span class="s1">&#39;prepped-minimized&#39;</span><span class="p">,</span><span class="n">gro</span><span class="o">=</span><span class="s1">&#39;system&#39;</span><span class="p">)</span>
+<span class="n">bilayer_sorter</span><span class="p">(</span><span class="n">structure</span><span class="o">=</span><span class="s1">&#39;prepped-minimized&#39;</span><span class="p">,</span><span class="n">ndx</span><span class="o">=</span><span class="s1">&#39;system-groups&#39;</span><span class="p">,</span><span class="n">protein</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">equilibrate</span><span class="p">(</span><span class="n">groups</span><span class="o">=</span><span class="s1">&#39;system-groups&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="inputs-bilayers-scripts-bilayer-release-py">
+<h2>inputs/bilayers/scripts/bilayer-release.py<a class="headerlink" href="#inputs-bilayers-scripts-bilayer-release-py" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+
+<span class="kn">from</span> <span class="nn">amx</span> <span class="k">import</span> <span class="o">*</span>
+
+<span class="n">init</span><span class="p">()</span>
+<span class="n">make_step</span><span class="p">(</span><span class="n">settings</span><span class="o">.</span><span class="n">step</span><span class="p">)</span>
+<span class="n">write_continue_script</span><span class="p">()</span>
+<span class="n">release_restraints</span><span class="p">()</span>
+<span class="n">state</span><span class="o">.</span><span class="n">mdp_specs</span> <span class="o">=</span> <span class="n">state</span><span class="o">.</span><span class="n">before</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="s1">&#39;settings&#39;</span><span class="p">][</span><span class="s1">&#39;mdp_specs&#39;</span><span class="p">]</span>
+<span class="n">write_mdp</span><span class="p">()</span>
+<span class="n">write_topology</span><span class="p">(</span><span class="s1">&#39;system.top&#39;</span><span class="p">)</span>
+<span class="n">restart_clean</span><span class="p">(</span><span class="n">part</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+	<span class="n">structure</span><span class="o">=</span><span class="s1">&#39;system&#39;</span><span class="p">,</span>
+	<span class="n">groups</span><span class="o">=</span><span class="s1">&#39;system-groups&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="inputs-bilayers-scripts-bilayer-py">
+<h2>inputs/bilayers/scripts/bilayer.py<a class="headerlink" href="#inputs-bilayers-scripts-bilayer-py" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+
+<span class="kn">from</span> <span class="nn">amx</span> <span class="k">import</span> <span class="o">*</span>
+
+<span class="n">init</span><span class="p">()</span>
+<span class="n">make_step</span><span class="p">(</span><span class="n">settings</span><span class="o">.</span><span class="n">step</span><span class="p">)</span>
+<span class="n">write_mdp</span><span class="p">()</span>
+<span class="n">write_continue_script</span><span class="p">()</span>
+<span class="n">build_bilayer</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;vacuum-bilayer&#39;</span><span class="p">)</span>
+<span class="n">copy_file</span><span class="p">(</span><span class="s1">&#39;vacuum-bilayer.gro&#39;</span><span class="p">,</span><span class="s1">&#39;vacuum.gro&#39;</span><span class="p">)</span>
+<span class="n">state</span><span class="o">.</span><span class="n">force_field</span> <span class="o">=</span> <span class="n">state</span><span class="o">.</span><span class="n">force_field_upright</span>
+<span class="n">write_top</span><span class="p">(</span><span class="s1">&#39;vacuum.top&#39;</span><span class="p">)</span>
+<span class="n">minimize</span><span class="p">(</span><span class="s1">&#39;vacuum&#39;</span><span class="p">)</span>
+<span class="n">vacuum_pack_loop</span><span class="p">(</span>
+	<span class="n">structure</span><span class="o">=</span><span class="s1">&#39;vacuum-minimized&#39;</span><span class="p">,</span>
+	<span class="n">tpr</span><span class="o">=</span><span class="s1">&#39;em-vacuum-steep&#39;</span><span class="p">,</span>
+	<span class="n">gro</span><span class="o">=</span><span class="s1">&#39;vacuum-packed&#39;</span><span class="p">)</span>
+<span class="n">restuff</span><span class="p">(</span>
+	<span class="n">structure</span><span class="o">=</span><span class="s1">&#39;vacuum-packed&#39;</span><span class="p">,</span>
+	<span class="n">gro</span><span class="o">=</span><span class="s1">&#39;solvate-dry&#39;</span><span class="p">,</span>
+	<span class="n">tpr</span><span class="o">=</span><span class="n">get_last</span><span class="p">(</span><span class="s1">&#39;tpr&#39;</span><span class="p">),</span>
+	<span class="n">ndx</span><span class="o">=</span><span class="n">get_last</span><span class="p">(</span><span class="s1">&#39;ndx&#39;</span><span class="p">))</span>
+<span class="n">solvate</span><span class="p">(</span>
+	<span class="n">structure</span><span class="o">=</span><span class="s1">&#39;solvate-dry&#39;</span><span class="p">,</span>
+	<span class="n">gro</span><span class="o">=</span><span class="s1">&#39;solvate-dense&#39;</span><span class="p">)</span>
+<span class="n">write_top</span><span class="p">(</span><span class="s1">&#39;solvate.top&#39;</span><span class="p">)</span>
+<span class="n">minimize</span><span class="p">(</span><span class="s1">&#39;solvate&#39;</span><span class="p">)</span>
+<span class="n">remove_jump</span><span class="p">(</span>
+	<span class="n">structure</span><span class="o">=</span><span class="s1">&#39;solvate-minimized&#39;</span><span class="p">,</span>
+	<span class="n">tpr</span><span class="o">=</span><span class="s1">&#39;em-solvate-steep&#39;</span><span class="p">,</span>
+	<span class="n">gro</span><span class="o">=</span><span class="s1">&#39;solvate-nojump&#39;</span><span class="p">)</span>
+<span class="n">counterions</span><span class="p">(</span><span class="s1">&#39;solvate-nojump&#39;</span><span class="p">,</span><span class="s1">&#39;solvate&#39;</span><span class="p">)</span>
+<span class="n">counterion_renamer</span><span class="p">(</span><span class="s1">&#39;counterions&#39;</span><span class="p">)</span>
+<span class="n">write_top</span><span class="p">(</span><span class="s1">&#39;counterions.top&#39;</span><span class="p">)</span>
+<span class="n">minimize</span><span class="p">(</span><span class="s1">&#39;counterions&#39;</span><span class="p">)</span>
+<span class="n">remove_jump</span><span class="p">(</span>
+	<span class="n">structure</span><span class="o">=</span><span class="s1">&#39;counterions-minimized&#39;</span><span class="p">,</span>
+	<span class="n">tpr</span><span class="o">=</span><span class="s1">&#39;em-counterions-steep&#39;</span><span class="p">,</span>
+	<span class="n">gro</span><span class="o">=</span><span class="s1">&#39;counterions-nojump&#39;</span><span class="p">)</span>
+<span class="n">bilayer_middle</span><span class="p">(</span>
+	<span class="n">structure</span><span class="o">=</span><span class="s1">&#39;counterions-nojump&#39;</span><span class="p">,</span>
+	<span class="n">gro</span><span class="o">=</span><span class="s1">&#39;system&#39;</span><span class="p">)</span>
+<span class="n">bilayer_sorter</span><span class="p">(</span>
+	<span class="n">structure</span><span class="o">=</span><span class="s1">&#39;system&#39;</span><span class="p">,</span>
+	<span class="n">ndx</span><span class="o">=</span><span class="s1">&#39;system-groups&#39;</span><span class="p">)</span>
+<span class="n">state</span><span class="o">.</span><span class="n">force_field</span> <span class="o">=</span> <span class="n">settings</span><span class="o">.</span><span class="n">force_field</span>
+<span class="n">write_top</span><span class="p">(</span><span class="s1">&#39;system.top&#39;</span><span class="p">)</span>
+<span class="n">equilibrate</span><span class="p">(</span><span class="n">groups</span><span class="o">=</span><span class="s1">&#39;system-groups&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="experiments.html" title="Experiments"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="../amx-proteins/experiments.html" title="Experiments"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">AMX docs</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+    </div>
+  </body>
+</html>
