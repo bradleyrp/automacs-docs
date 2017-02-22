@@ -1,0 +1,19 @@
+Modules
+=======
+
+martini
+-------
+
+.. automodule:: martini
+	:members:
+	:undoc-members:
+	:show-inheritance:
+
+parameters
+----------
+
+.. automodule:: parameters
+	:members:
+	:undoc-members:
+	:show-inheritance:
+
