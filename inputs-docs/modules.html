@@ -110,6 +110,27 @@
 3. Experiments: experiment specificatiojns</p>
 </dd></dl>
 
+<dl class="function">
+<dt id="docs.publish_docs">
+<code class="descclassname">docs.</code><code class="descname">publish_docs</code><span class="sig-paren">(</span><em>to=''</em><span class="sig-paren">)</span><a class="headerlink" href="#docs.publish_docs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Prepare documentation for push to github pages. Administrator usage only.
+WARNING! Make sure you compile the docs manually before you run this!</p>
+<p>This function will clean then make the docs, and set up the repo to track the github repo.
+We used a similar procedure to update the docs, and eventually replaced it with the current
+set of commands to handle the newer versions of git.    
+The first commit to the repo was created as follows (saved here for posterity):</p>
+<blockquote>
+<div>git init .
+git commit -m &#8216;initial commit&#8217; &#8211;allow-empty
+git branch gh-pages
+git checkout gh-pages
+touch .nojekyll
+git add .
+git commit -am &#8216;added files&#8217;
+git remote add origin &lt;destination&gt;
+git push -u origin gh-pages</div></blockquote>
+</dd></dl>
+
 </div>
 <div class="section" id="module-sphinx_auto">
 <span id="sphinx-auto"></span><h2>sphinx_auto<a class="headerlink" href="#module-sphinx_auto" title="Permalink to this headline">¶</a></h2>

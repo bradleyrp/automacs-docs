@@ -676,9 +676,42 @@ Write the topology file.</p>
 This class reads the force field files according to types and exposes them to automacs in a way that
 makes it easy to ask for ion definitions by type.</p>
 <p class="rubric">Methods</p>
+<dl class="method">
+<dt id="force_field_tools.Landscape.anions">
+<code class="descname">anions</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#force_field_tools.Landscape.anions" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="force_field_tools.Landscape.cations">
+<code class="descname">cations</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#force_field_tools.Landscape.cations" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="force_field_tools.Landscape.lipids">
+<code class="descname">lipids</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#force_field_tools.Landscape.lipids" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="force_field_tools.Landscape.my">
+<code class="descname">my</code><span class="sig-paren">(</span><em>struct</em>, <em>cat</em><span class="sig-paren">)</span><a class="headerlink" href="#force_field_tools.Landscape.my" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the item names for a GMXStructure.
+Uses atom names. Returns any atom names that apply, so this is really ion-specific !!!</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="force_field_tools.Landscape.objects_by_category">
+<code class="descname">objects_by_category</code><span class="sig-paren">(</span><em>cat</em><span class="sig-paren">)</span><a class="headerlink" href="#force_field_tools.Landscape.objects_by_category" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return all object names in a particular category.</p>
+</dd></dl>
+
 <dl class="attribute">
 <dt id="force_field_tools.Landscape.protein_residues">
 <code class="descname">protein_residues</code><em class="property"> = ['GLH', 'ILE', 'ALAD', 'GLUH', 'GLN', 'HISH', 'ASN1', 'HYP', 'GLY', 'HIP', 'ARGN', 'MSE', 'CYS1', 'GLU', 'CYS2', 'CYS', 'HISE', 'ASP', 'SER', 'HSD', 'HSE', 'PRO', 'CYX', 'ASPH', 'ORN', 'HSP', 'HID', 'HIE', 'LYN', 'DAB', 'ASN', 'CYM', 'HISD', 'VAL', 'THR', 'HISB', 'HIS', 'HIS1', 'HIS2', 'TRP', 'HISA', 'ACE', 'ASH', 'CYSH', 'PGLU', 'LYS', 'PHE', 'ALA', 'QLN', 'MET', 'LYSH', 'NME', 'LEU', 'ARG', 'TYR']</em><a class="headerlink" href="#force_field_tools.Landscape.protein_residues" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="force_field_tools.Landscape.protein_selection">
+<code class="descname">protein_selection</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#force_field_tools.Landscape.protein_selection" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return a protein selection string for make_ndx.</p>
 </dd></dl>
 
@@ -689,19 +722,116 @@ makes it easy to ask for ion definitions by type.</p>
 <em class="property">class </em><code class="descclassname">structure_tools.</code><code class="descname">GMXStructure</code><span class="sig-paren">(</span><em>fn=None</em>, <em>center=False</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#structure_tools.GMXStructure" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
 <p class="rubric">Methods</p>
+<dl class="method">
+<dt id="structure_tools.GMXStructure.add">
+<code class="descname">add</code><span class="sig-paren">(</span><em>another</em>, <em>before=False</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#structure_tools.GMXStructure.add" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add another GRO to this one.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="structure_tools.GMXStructure.cog">
+<code class="descname">cog</code><span class="sig-paren">(</span><em>*inds</em><span class="sig-paren">)</span><a class="headerlink" href="#structure_tools.GMXStructure.cog" title="Permalink to this definition">¶</a></dt>
+<dd><p>Given a set of index lists (presumably returned from select), return the centroid of centroids.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="structure_tools.GMXStructure.detect_composition">
+<code class="descname">detect_composition</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#structure_tools.GMXStructure.detect_composition" title="Permalink to this definition">¶</a></dt>
+<dd><p>Infer the topology.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="structure_tools.GMXStructure.detect_composition_NEWISH">
+<code class="descname">detect_composition_NEWISH</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#structure_tools.GMXStructure.detect_composition_NEWISH" title="Permalink to this definition">¶</a></dt>
+<dd><p>Detect the composition of a system in order to write an accurate topology file.
+pseudocode:</p>
+<blockquote>
+<div><p>see if there are blocks with proteins
+if PROTEINS</p>
+<blockquote>
+<div><p>search for ITP files
+if multiple ITP files throw an error
+if itp then</p>
+<blockquote>
+<div>read in distinct protein objects
+scan resnames for residues that correspond to them
+if any gaps/etc throw an error
+otherwise log the proteins in their position in the sequence
+then recapitulate the original composition method</div></blockquote>
+</div></blockquote>
+</div></blockquote>
+</dd></dl>
+
+<dl class="method">
+<dt id="structure_tools.GMXStructure.fix_residue_numbering">
+<code class="descname">fix_residue_numbering</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#structure_tools.GMXStructure.fix_residue_numbering" title="Permalink to this definition">¶</a></dt>
+<dd><p>Ensure coherent residue numbering.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="structure_tools.GMXStructure.get_landscape">
+<code class="descname">get_landscape</code><span class="sig-paren">(</span><em>fn=None</em><span class="sig-paren">)</span><a class="headerlink" href="#structure_tools.GMXStructure.get_landscape" title="Permalink to this definition">¶</a></dt>
+<dd><p>REPLACE WITH force_field_tools.py</p>
+</dd></dl>
+
 <dl class="attribute">
 <dt id="structure_tools.GMXStructure.meta_keys">
 <code class="descname">meta_keys</code><em class="property"> = ['atom_names', 'residue_names', 'residue_indices', 'points']</em><a class="headerlink" href="#structure_tools.GMXStructure.meta_keys" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="structure_tools.GMXStructure.read_box_vectors">
+<code class="descname">read_box_vectors</code><span class="sig-paren">(</span><em>string</em><span class="sig-paren">)</span><a class="headerlink" href="#structure_tools.GMXStructure.read_box_vectors" title="Permalink to this definition">¶</a></dt>
 <dd><p>Interpret box vectors. The GRO box vector is a list of space-separated reals.</p>
-<p>Sort everything in the system so it follows the composition order.</p>
-<p>Remove atoms corresponding to a selection.</p>
-<p>Renumber residues.</p>
-<p>Return atom indices for items that match a particular selection.</p>
-<p>Wraps a common call to cog which retrieves the center of geometry for a list of selections.</p>
-<p>Remove nearby waters. Recapitulates much of trim_waters in common.py but is adapted slightly.
+</dd></dl>
+
+<dl class="method">
+<dt id="structure_tools.GMXStructure.regroup">
+<code class="descname">regroup</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#structure_tools.GMXStructure.regroup" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sort everything in the system so it follows the composition order.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="structure_tools.GMXStructure.remove">
+<code class="descname">remove</code><span class="sig-paren">(</span><em>inds</em><span class="sig-paren">)</span><a class="headerlink" href="#structure_tools.GMXStructure.remove" title="Permalink to this definition">¶</a></dt>
+<dd><p>Remove atoms corresponding to a selection.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="structure_tools.GMXStructure.renumber">
+<code class="descname">renumber</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#structure_tools.GMXStructure.renumber" title="Permalink to this definition">¶</a></dt>
+<dd><p>Renumber residues.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="structure_tools.GMXStructure.select">
+<code class="descname">select</code><span class="sig-paren">(</span><em>text</em>, <em>return_bools=False</em><span class="sig-paren">)</span><a class="headerlink" href="#structure_tools.GMXStructure.select" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return atom indices for items that match a particular selection.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="structure_tools.GMXStructure.select_center">
+<code class="descname">select_center</code><span class="sig-paren">(</span><em>selections</em><span class="sig-paren">)</span><a class="headerlink" href="#structure_tools.GMXStructure.select_center" title="Permalink to this definition">¶</a></dt>
+<dd><p>Wraps a common call to cog which retrieves the center of geometry for a list of selections.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="structure_tools.GMXStructure.trim">
+<code class="descname">trim</code><span class="sig-paren">(</span><em>gap=0.3</em>, <em>subject=None</em>, <em>discard=None</em><span class="sig-paren">)</span><a class="headerlink" href="#structure_tools.GMXStructure.trim" title="Permalink to this definition">¶</a></dt>
+<dd><p>Remove nearby waters. Recapitulates much of trim_waters in common.py but is adapted slightly.
 The discard</p>
-<p>Write a GRO file.</p>
-<p>Turn the box vectors from a triplet into a string.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="structure_tools.GMXStructure.write">
+<code class="descname">write</code><span class="sig-paren">(</span><em>out_fn</em><span class="sig-paren">)</span><a class="headerlink" href="#structure_tools.GMXStructure.write" title="Permalink to this definition">¶</a></dt>
+<dd><p>Write a GRO file.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="structure_tools.GMXStructure.write_box">
+<code class="descname">write_box</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#structure_tools.GMXStructure.write_box" title="Permalink to this definition">¶</a></dt>
+<dd><p>Turn the box vectors from a triplet into a string.</p>
 </dd></dl>
 
 </dd></dl>
@@ -730,6 +860,16 @@ The discard</p>
 <dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
 <p>A collection of GMXTopology files</p>
 <p class="rubric">Methods</p>
+<dl class="method">
+<dt id="topology_tools.GMXForceField.molecule">
+<code class="descname">molecule</code><span class="sig-paren">(</span><em>name</em><span class="sig-paren">)</span><a class="headerlink" href="#topology_tools.GMXForceField.molecule" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="topology_tools.GMXForceField.molecules_list">
+<code class="descname">molecules_list</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#topology_tools.GMXForceField.molecules_list" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
 </dd></dl>
 
 <dl class="class">
@@ -738,6 +878,30 @@ The discard</p>
 <dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
 <p>Represent a molecule topology.</p>
 <p class="rubric">Methods</p>
+<dl class="method">
+<dt id="topology_tools.GMXTopology.entry_pre_proc">
+<code class="descname">entry_pre_proc</code><span class="sig-paren">(</span><em>match</em><span class="sig-paren">)</span><a class="headerlink" href="#topology_tools.GMXTopology.entry_pre_proc" title="Permalink to this definition">¶</a></dt>
+<dd><p>Catalogue and apply preprocessor flags, namely ifdef.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="topology_tools.GMXTopology.entry_proc">
+<code class="descname">entry_proc</code><span class="sig-paren">(</span><em>name</em>, <em>text</em><span class="sig-paren">)</span><a class="headerlink" href="#topology_tools.GMXTopology.entry_proc" title="Permalink to this definition">¶</a></dt>
+<dd><p>Process a single entry type in ???</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="topology_tools.GMXTopology.process_moleculetype">
+<code class="descname">process_moleculetype</code><span class="sig-paren">(</span><em>text</em><span class="sig-paren">)</span><a class="headerlink" href="#topology_tools.GMXTopology.process_moleculetype" title="Permalink to this definition">¶</a></dt>
+<dd><p>Interpret a single moleculetype entry from a GROMACS itp file.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="topology_tools.GMXTopology.write">
+<code class="descname">write</code><span class="sig-paren">(</span><em>fn</em><span class="sig-paren">)</span><a class="headerlink" href="#topology_tools.GMXTopology.write" title="Permalink to this definition">¶</a></dt>
+<dd><p>Write an ITP file.</p>
+</dd></dl>
+
 </dd></dl>
 
 <span class="target" id="module-utils"></span><dl class="function">

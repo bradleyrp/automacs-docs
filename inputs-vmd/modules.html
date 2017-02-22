@@ -279,11 +279,86 @@ Note that this function prepares a local viewer script for each video so users c
 <em class="property">class </em><code class="descclassname">vmdmake.</code><code class="descname">VMDWrap</code><span class="sig-paren">(</span><em>name='vmd'</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#vmdmake.VMDWrap" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
 <p class="rubric">Methods</p>
+<dl class="method">
+<dt id="vmdmake.VMDWrap.command">
+<code class="descname">command</code><span class="sig-paren">(</span><em>text</em><span class="sig-paren">)</span><a class="headerlink" href="#vmdmake.VMDWrap.command" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add a raw command to the script if necessary.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="vmdmake.VMDWrap.do">
+<code class="descname">do</code><span class="sig-paren">(</span><em>*names</em><span class="sig-paren">)</span><a class="headerlink" href="#vmdmake.VMDWrap.do" title="Permalink to this definition">¶</a></dt>
+<dd><p>Use a set of prescribed code blocks defined in commons.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="vmdmake.VMDWrap.martini_secondary_structure">
+<code class="descname">martini_secondary_structure</code><span class="sig-paren">(</span><em>itp</em>, <em>style='all'</em>, <em>name='protein_subject'</em>, <em>back_color=None</em>, <em>mers=1</em><span class="sig-paren">)</span><a class="headerlink" href="#vmdmake.VMDWrap.martini_secondary_structure" title="Permalink to this definition">¶</a></dt>
+<dd><p>Color a MARTINI protein by secondary structure.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="vmdmake.VMDWrap.recipe">
+<code class="descname">recipe</code><span class="sig-paren">(</span><em>recipe</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#vmdmake.VMDWrap.recipe" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add from a set of predefined selections.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="vmdmake.VMDWrap.render">
+<code class="descname">render</code><span class="sig-paren">(</span><em>name='video'</em>, <em>rate=1.0</em>, <em>codec=None</em>, <em>size=50.0</em>, <em>duration=0.0</em>, <em>webm=False</em><span class="sig-paren">)</span><a class="headerlink" href="#vmdmake.VMDWrap.render" title="Permalink to this definition">¶</a></dt>
+<dd><p>Render a video from snapshots.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="vmdmake.VMDWrap.select">
+<code class="descname">select</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#vmdmake.VMDWrap.select" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a new selection with string substitutions.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="vmdmake.VMDWrap.set_color_cursor">
+<code class="descname">set_color_cursor</code><span class="sig-paren">(</span><em>color</em><span class="sig-paren">)</span><a class="headerlink" href="#vmdmake.VMDWrap.set_color_cursor" title="Permalink to this definition">¶</a></dt>
+<dd><p>The $color_cursor variable in tcl is set to black (16) by the standard package but can be changed
+to use coloring by a particular ColorID, on the fly.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="vmdmake.VMDWrap.show">
+<code class="descname">show</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#vmdmake.VMDWrap.show" title="Permalink to this definition">¶</a></dt>
+<dd><p>Run VMD.
+The pipe option will feed commands directly to VMD for systems with a wonky setup.
+!option to remove everything when done (clean)?
+!dispdev text option (text)?</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="vmdmake.VMDWrap.trajectory">
+<code class="descname">trajectory</code><span class="sig-paren">(</span><em>target</em>, <em>first=0</em>, <em>last=-1</em>, <em>step=1</em><span class="sig-paren">)</span><a class="headerlink" href="#vmdmake.VMDWrap.trajectory" title="Permalink to this definition">¶</a></dt>
+<dd><p>Load a trajectory.
+Most functions are handled in the commons.py, however it makes more sense to do this manually.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="vmdmake.VMDWrap.video">
+<code class="descname">video</code><span class="sig-paren">(</span><em>traces=None</em>, <em>snapshot=False</em>, <em>pause=False</em>, <em>cwd=''</em>, <em>dn=None</em><span class="sig-paren">)</span><a class="headerlink" href="#vmdmake.VMDWrap.video" title="Permalink to this definition">¶</a></dt>
+<dd><p>Prepare to render a video by writing an add-on script.</p>
+</dd></dl>
+
 <dl class="attribute">
 <dt id="vmdmake.VMDWrap.vmd_colors">
-<code class="descname">vmd_colors</code><em class="property"> = {'tan': 5, 'ochre': 14, 'silver': 6, 'iceblue': 15, 'green': 7, 'pink': 9, 'purple': 11, 'cyan': 10, 'gray': 2, 'lime': 12, 'red': 1, 'orange': 3, 'yellow': 4, 'black': 16, 'mauve': 13, 'white': 8, 'blue': 0}</em><a class="headerlink" href="#vmdmake.VMDWrap.vmd_colors" title="Permalink to this definition">¶</a></dt>
+<code class="descname">vmd_colors</code><em class="property"> = {'cyan': 10, 'black': 16, 'green': 7, 'purple': 11, 'lime': 12, 'tan': 5, 'silver': 6, 'blue': 0, 'gray': 2, 'yellow': 4, 'red': 1, 'white': 8, 'pink': 9, 'orange': 3, 'iceblue': 15, 'mauve': 13, 'ochre': 14}</em><a class="headerlink" href="#vmdmake.VMDWrap.vmd_colors" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="vmdmake.VMDWrap.write">
+<code class="descname">write</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#vmdmake.VMDWrap.write" title="Permalink to this definition">¶</a></dt>
 <dd><p>Write the script.</p>
-<p>Try yamlparse (comes from yamlb in acme) first otherwise treat it like python.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="vmdmake.VMDWrap.yamlparse">
+<code class="descname">yamlparse</code><span class="sig-paren">(</span><em>text</em><span class="sig-paren">)</span><a class="headerlink" href="#vmdmake.VMDWrap.yamlparse" title="Permalink to this definition">¶</a></dt>
+<dd><p>Try yamlparse (comes from yamlb in acme) first otherwise treat it like python.</p>
 </dd></dl>
 
 </dd></dl>
