@@ -1,0 +1,23 @@
+Scripts
+=======
+
+inputs/bilayers/scripts/bilayer-flat.py
+---------------------------------------
+
+.. literalinclude:: ../../../bilayers/scripts/bilayer-flat.py
+
+inputs/bilayers/scripts/bilayer-protein.py
+------------------------------------------
+
+.. literalinclude:: ../../../bilayers/scripts/bilayer-protein.py
+
+inputs/bilayers/scripts/bilayer-release.py
+------------------------------------------
+
+.. literalinclude:: ../../../bilayers/scripts/bilayer-release.py
+
+inputs/bilayers/scripts/bilayer.py
+----------------------------------
+
+.. literalinclude:: ../../../bilayers/scripts/bilayer.py
+

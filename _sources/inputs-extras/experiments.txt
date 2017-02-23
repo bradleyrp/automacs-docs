@@ -1,0 +1,13 @@
+Experiments
+===========
+
+inputs/extras/extras_expts.py
+-----------------------------
+
+.. literalinclude:: ../../../extras/extras_expts.py
+
+inputs/extras/test_fast_expts.py
+--------------------------------
+
+.. literalinclude:: ../../../extras/test_fast_expts.py
+
