@@ -386,7 +386,7 @@ directory structure.</p>
 
 <dl class="function">
 <dt id="cli.setup">
-<code class="descclassname">cli.</code><code class="descname">setup</code><span class="sig-paren">(</span><em>name</em><span class="sig-paren">)</span><a class="headerlink" href="#cli.setup" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">cli.</code><code class="descname">setup</code><span class="sig-paren">(</span><em>name=''</em><span class="sig-paren">)</span><a class="headerlink" href="#cli.setup" title="Permalink to this definition">¶</a></dt>
 <dd><p>Run this after cloning a fresh copy of automacs in order to clone some standard</p>
 </dd></dl>
 
@@ -966,8 +966,7 @@ But this function does that and even more, so it&#8217;s pretty useful.</p>
 <dl class="function">
 <dt id="control.clean">
 <code class="descclassname">control.</code><code class="descname">clean</code><span class="sig-paren">(</span><em>sure=False</em><span class="sig-paren">)</span><a class="headerlink" href="#control.clean" title="Permalink to this definition">¶</a></dt>
-<dd><p>Clean files from the current directory.</p>
-</dd></dl>
+<dd></dd></dl>
 
 <dl class="function">
 <dt id="control.back">
@@ -1005,7 +1004,7 @@ function to <code class="docutils literal"><span class="pre">make</span> <span c
 
 <dl class="function">
 <dt id="control.go">
-<code class="descclassname">control.</code><code class="descname">go</code><span class="sig-paren">(</span><em>procname</em>, <em>restart=False</em><span class="sig-paren">)</span><a class="headerlink" href="#control.go" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">control.</code><code class="descname">go</code><span class="sig-paren">(</span><em>procname</em>, <em>clean=False</em><span class="sig-paren">)</span><a class="headerlink" href="#control.go" title="Permalink to this definition">¶</a></dt>
 <dd><p>Sugar for running <code class="docutils literal"><span class="pre">make</span> <span class="pre">prep</span> <span class="pre">(name)</span> <span class="pre">&amp;&amp;</span> <span class="pre">make</span> <span class="pre">run</span></code> which also works for metaruns or quick scripts.</p>
 </dd></dl>
 
@@ -1087,8 +1086,7 @@ to the interface. You can set <code class="docutils literal"><span class="pre">_
 <dl class="function">
 <dt id="makeface.makeface">
 <code class="descclassname">makeface.</code><code class="descname">makeface</code><span class="sig-paren">(</span><em>*arglist</em><span class="sig-paren">)</span><a class="headerlink" href="#makeface.makeface" title="Permalink to this definition">¶</a></dt>
-<dd><p>### M2P &#8220;Makefile to python&#8221;
-### Ryan Bradley&#8217;s ultra-hackish way of making CLI&#8217;s for python</p>
+<dd><p>Route <code class="docutils literal"><span class="pre">make</span></code> commands into python.</p>
 </dd></dl>
 
 <dl class="function">
